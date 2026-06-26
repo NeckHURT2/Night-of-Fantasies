@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerControle : MonoBehaviour
 {
     public float velocidade = 5f;
-    public float forcaPulo = 10f;
+    public float forcaPulo = 5f;
 
     public Rigidbody2D rb;
     public Vector2 movimento;
