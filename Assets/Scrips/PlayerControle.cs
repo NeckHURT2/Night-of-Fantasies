@@ -81,13 +81,15 @@ public class PlayerControle : MonoBehaviour
     {
        // Vira o sprite automaticamente
         if (movimento.x != 0)
-            sr.flipX = movimento.x < 0;
-
+        {
+           sr.flipX = movimento.x < 0;
+        }
+        
         if (Parede)
         {
             rb.linearVelocity = new Vector2( rb.linearVelocity.x,0);
         }
     }
-    }
+    
 
 }
