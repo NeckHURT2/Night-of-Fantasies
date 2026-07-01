@@ -16,8 +16,18 @@ public class Inimigo : MonoBehaviour
     }
 
     private void Morrer()
-    {
-        Debug.Log("Inimigo morreu!");
-        Destroy(gameObject);
-    }
+{
+    Debug.Log("Inimigo morreu!");
+
+    gameObject.SetActive(false);
+
+    Invoke("Respawn", 4f);
+}
+
+private void Respawn()
+{
+    vida = 30;
+
+    gameObject.SetActive(true);
+}
 }
