@@ -4,7 +4,8 @@ using UnityEngine.InputSystem;
 public class PlayerControle : MonoBehaviour
 {
     public float velocidade = 5f;
-    public float forcaPulo = 5f;
+    public float forcaPulo = 10f;
+    bool Parede = false;
 
     public Rigidbody2D rb;
     public Vector2 movimento;
@@ -49,12 +50,24 @@ public class PlayerControle : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Chao"))
             noChao = true;
+        
+         if (colisao.gameObject.CompareTag("Parede"))
+        {
+            Parede = true;
+        }
     }
 
      void OnCollisionExit2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Chao"))
+        {
             noChao = false;
+        }
+        
+       if (colisao.gameObject.CompareTag("Parede"))
+        {
+            Parede = false;
+        }
     }
 
     void Update()
@@ -70,6 +83,15 @@ public class PlayerControle : MonoBehaviour
     {
        // Vira o sprite automaticamente
         if (movimento.x != 0)
-            sr.flipX = movimento.x < 0;
+        {
+           sr.flipX = movimento.x < 0;
+        }
+        
+        if (Parede)
+        {
+            rb.linearVelocity = new Vector2( rb.linearVelocity.x,0);
+        }
     }
+    
+
 }
